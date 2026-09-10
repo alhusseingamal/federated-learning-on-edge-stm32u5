@@ -331,6 +331,44 @@ UINT dns_create(NX_DNS *dns_ptr)
 
 // @ali: 4th modification
 
+static UINT fl_tcp_receive_exact(NX_TCP_SOCKET *socket_ptr, UCHAR *dest, ULONG n_bytes, ULONG wait_option)
+{
+  ULONG total_received = 0;
+  NX_PACKET *packet_ptr;
+  UINT status;
+  ULONG bytes_copied;
+
+  while (total_received < n_bytes)
+  {
+    status = nx_tcp_socket_receive(socket_ptr, &packet_ptr, wait_option);
+    if (status != NX_SUCCESS)
+    {
+      printf("[fl_tcp_receive_exact] nx_tcp_socket_receive failed: 0x%02X\r\n", status);
+      return status;
+    }
+
+    status = nx_packet_data_extract_offset(packet_ptr, 0, dest + total_received,
+                                            n_bytes - total_received, &bytes_copied);
+    nx_packet_release(packet_ptr);
+
+    if (status != NX_SUCCESS)
+    {
+      printf("[fl_tcp_receive_exact] extract_offset failed: 0x%02X\r\n", status);
+      return status;
+    }
+    if (bytes_copied == 0)
+    {
+      printf("[fl_tcp_receive_exact] 0 bytes extracted! Continuing wait...\r\n");
+      return NX_NOT_SUCCESSFUL;  /* guard against an infinite loop if 0 bytes ever comes back */
+    }
+
+    total_received += bytes_copied;
+    printf("[FL] recv chunk: %lu bytes (total %lu/%lu)\r\n", bytes_copied, total_received, n_bytes);
+  }
+
+  return NX_SUCCESS;
+}
+
 #define FL_WEIGHTS_BYTES        (HEAD_FLAT_SIZE * sizeof(float))
 #define FL_SERVER_PORT          9999
 #define FL_SERVER_IP            IP_ADDRESS(192, 168, 42, 1)
@@ -338,7 +376,7 @@ UINT dns_create(NX_DNS *dns_ptr)
 static void App_SNTP_Thread_Entry(ULONG info)
 {
   UINT status;
-  NX_PACKET *recv_packet;
+  // NX_PACKET *recv_packet;
   NX_PACKET *send_packet;
   ULONG round_count = 0;
   ULONG bytes_copied = 0;
@@ -349,7 +387,7 @@ static void App_SNTP_Thread_Entry(ULONG info)
   /* 1. Setup & Connect TCP Socket */
   status = nx_tcp_socket_create(&IpInstance, &FLClientSocket, "FL Client Socket",
                                 NX_IP_NORMAL, NX_FRAGMENT_OKAY, NX_IP_TIME_TO_LIVE,
-                                PAYLOAD_SIZE, NX_NULL, NX_NULL);
+                                1536, NX_NULL, NX_NULL);
   if (status != NX_SUCCESS) return;
 
   status = nx_tcp_client_socket_bind(&FLClientSocket, NX_ANY_PORT, TX_WAIT_FOREVER);
@@ -367,12 +405,15 @@ static void App_SNTP_Thread_Entry(ULONG info)
   printf("FL connected to server\r\n");
 
   /* 2. Receive Round Count Handshake */
-  status = nx_tcp_socket_receive(&FLClientSocket, &recv_packet, NX_IP_PERIODIC_RATE * 5);
+  // status = nx_tcp_socket_receive(&FLClientSocket, &recv_packet, NX_IP_PERIODIC_RATE * 5);
+  // if (status != NX_SUCCESS) return;
+  status = fl_tcp_receive_exact(&FLClientSocket, (UCHAR *)&round_count, sizeof(round_count), NX_IP_PERIODIC_RATE * 5);
   if (status != NX_SUCCESS) return;
+  printf("FL server requested %lu round(s)\r\n", (unsigned long)round_count);
 
-  status = nx_packet_data_extract_offset(recv_packet, 0, &round_count, sizeof(round_count), &bytes_copied);
-  nx_packet_release(recv_packet);
-  if (status != NX_SUCCESS || bytes_copied != sizeof(round_count)) return;
+  // status = nx_packet_data_extract_offset(recv_packet, 0, &round_count, sizeof(round_count), &bytes_copied);
+  // nx_packet_release(recv_packet);
+  // if (status != NX_SUCCESS || bytes_copied != sizeof(round_count)) return;
 
   printf("FL server requested %lu round(s)\r\n", (unsigned long)round_count);
 
@@ -382,13 +423,19 @@ static void App_SNTP_Thread_Entry(ULONG info)
     printf("--- Starting FL Round %lu/%lu ---\r\n", r + 1, round_count);
 
     /* 3a. Receive global weights */
-    status = nx_tcp_socket_receive(&FLClientSocket, &recv_packet, TX_WAIT_FOREVER);
-    if (status != NX_SUCCESS) break;
+    // status = nx_tcp_socket_receive(&FLClientSocket, &recv_packet, TX_WAIT_FOREVER);
+    // if (status != NX_SUCCESS) break;
+    /* Change Step 3a in App_SNTP_Thread_Entry */
+    status = fl_tcp_receive_exact(&FLClientSocket, (UCHAR *)weights_buffer, FL_WEIGHTS_BYTES, NX_IP_PERIODIC_RATE * 10000);
+    if (status != NX_SUCCESS) 
+    {
+      printf("[FL ERROR] Timed out waiting for weights: 0x%02X\r\n", status);
+      break;
+    }
 
-    status = nx_packet_data_extract_offset(recv_packet, 0, weights_buffer, FL_WEIGHTS_BYTES, &bytes_copied);
-    nx_packet_release(recv_packet);
-
-    if (status != NX_SUCCESS || bytes_copied != FL_WEIGHTS_BYTES) break;
+    // status = nx_packet_data_extract_offset(recv_packet, 0, weights_buffer, FL_WEIGHTS_BYTES, &bytes_copied);
+    // nx_packet_release(recv_packet);
+    // if (status != NX_SUCCESS || bytes_copied != FL_WEIGHTS_BYTES) break;
 
     /* 3b. Overwrite local head with global parameters */
     trainable_head_import_weights(weights_buffer);
@@ -418,6 +465,20 @@ static void App_SNTP_Thread_Entry(ULONG info)
       break;
     }
     printf("[FL] Weights transmitted to server for round %lu\r\n", r + 1);
+  }
+
+
+  /* 4. Receive Final Aggregated Global Model */
+  printf("[FL] Receiving final aggregated model from server...\r\n");
+  status = fl_tcp_receive_exact(&FLClientSocket, (UCHAR *)weights_buffer, FL_WEIGHTS_BYTES, NX_IP_PERIODIC_RATE * 15);
+  if (status == NX_SUCCESS)
+  {
+    trainable_head_import_weights(weights_buffer);
+    printf("[FL] Final aggregated model applied successfully!\r\n");
+  }
+  else
+  {
+    printf("[FL WARNING] Failed to receive final model (status 0x%02X)\r\n", status);
   }
 
   printf("FL session complete. Closing connection.\r\n");

@@ -157,9 +157,10 @@ class FLServer:
             try:
                 send_all(sock, self._current_global)
                 self.logger.info(f"{client_id}: final global model sent")
+                time.sleep(1.0)
             except OSError as e:
                 self.logger.error(f"{client_id}: failed to send final model ({e})")
-                
+
         except threading.BrokenBarrierError:
             self.logger.error(f"{client_id}: round aborted (another client dropped)")
         except (ConnectionError, OSError) as e:
@@ -183,6 +184,9 @@ class FLServer:
         accepted = 0
         while accepted < self.num_clients:
             conn, addr = self._listen_sock.accept()
+            conn.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            conn.setsockopt(socket.SOL_SOCKET, socket.SO_KEEPALIVE, 1)
+            conn.setsockopt(socket.SOL_SOCKET, socket.SO_LINGER, struct.pack('ii', 1, 5))
             client_id = f"client{accepted}@{addr[0]}:{addr[1]}"
             try:
                 send_all(conn, struct.pack(HANDSHAKE_FORMAT, self.num_rounds))
