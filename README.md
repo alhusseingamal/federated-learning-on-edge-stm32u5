@@ -45,23 +45,41 @@ Averaging protocol.
 ## Repository Structure
 
 ```
-firmware/
-├── Core/Src/main.c                # Peripheral init, UART RX priming
-├── AZURE_RTOS/App/app_threadx.c   # Sensor thread, command parser, mutexes
-├── NetXDuo/App/app_netxduo.c      # FL TCP client thread
-├── HAR/trainable_head.c/.h        # On-device linear head + SGD
-└── Auxiliary/                     # Model slicing / baseline-extraction scripts
-
-host/
+fl/
+├── Core/
+│   ├── Inc/trainable_head.h       # Trainable linear head interface
+│   └── Src/
+│       ├── main.c                # Peripheral init, UART RX priming
+│       ├── app_threadx.c         # Sensor thread, command parser, mutexes
+│       └── trainable_head.c      # On-device linear head + SGD
+├── AZURE_RTOS/App/               # ThreadX application setup
+├── NetXDuo/App/app_netxduo.c     # FL TCP client (App_SNTP_Thread_Entry)
+├── AI_Runtime/                   # ST Edge AI models and runtime headers
+│   ├── st_ign_wl_48.keras        # Original pretrained model
+│   └── Inc/
+├── HAR/
+│   ├── AI/                       # Generated full-model C code
+│   └── AI_EMBED/                 # Generated frozen-backbone C code with final head removed
+├── Auxiliary/
+│   ├── slice_model.py            # Cuts the Keras model at the dense layer
+│   ├── generate_baseline.py      # Extracts baseline head weights
+│   └── EMW3080update_*.bin      # Wi-Fi module firmware update image
+├── build/Debug/                 # CMake build output, including the ELF
+├── Drivers/, Middlewares/        # STM32, ThreadX, and NetX Duo dependencies
+├── CMakeLists.txt, CMakePresets.json
+├── fl.ioc                       # STM32CubeMX project configuration
 ├── server/
-│   ├── protocol.py                # Wire format + socket helpers
-│   ├── aggregate.py                # FedAvg math
-│   ├── server.py                   # FL aggregation server
-│   ├── fake_client.py              # Simulated board, for testing without hardware
-│   └── checkpoints/                # Saved global models per round
+│   ├── protocol.py              # Wire format + socket helpers
+│   ├── aggregate.py             # FedAvg math
+│   ├── server.py                # FL aggregation server
+│   ├── fake_client.py           # Simulated board, for testing without hardware
+│   ├── flaky_client.py          # Simulated dropped-connection test
+│   ├── bridge.py / serial_io.py # UART<->TCP bridge (superseded, see §8.3)
+│   └── checkpoints/              # Saved global models per round
 └── dashboard/
-    ├── main.py                     # NiceGUI dashboard
-    └── uart_backend.py             # pyserial transport
+    ├── main.py                  # NiceGUI dashboard
+    ├── backend.py               # Abstract transport interface
+    └── uart_backend.py          # pyserial transport
 ```
 
 ## Hardware Requirements
