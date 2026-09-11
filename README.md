@@ -18,6 +18,7 @@ before treating this as production-ready.
 - [Documentation](#documentation)
 - [Known Limitations](#known-limitations)
 - [Acknowledgments](#acknowledgments)
+- [Demo Video](#demo-video)
 
 ## Overview
 
@@ -134,3 +135,17 @@ and repeat once the server broadcasts the next round's global model.
 - Networking baseline adapted from ST's `Nx_SNTP_Client` Azure RTOS example.
 - FedAvg: McMahan et al., *"Communication-Efficient Learning of Deep
   Networks from Decentralized Data"*, AISTATS 2017.
+
+## Demo Video
+Find demo video [here](Auxiliary/docs/demo-video.mkv)  
+  
+**Breakdown**
+- MCUs connected
+- Dashboards started
+- Server Started
+- MCUs connect to server (triggered by RESET button)
+- Server broadcasts the initial model to the two MCUs
+  - *Note: for demo purposes, the broadcasted model in this demo has a zero-initialized head--rather than the actual head inherited from the frozen backbone--in order to see a noticeable effect of FL within a few rounds. So initially, the model assigns equal predictions to all classes (25%).*
+- Each MCU trains on a different task (e.g. MCU A trained on "stationary" activity, MCU B trained on "jogging")
+- After one round of FL, both MCUs get the updated model, and can be seen to have the same predictions for a given activity
+  - MCU A, trained only on "stationary" state, can now recognize "jogging" with a higher probability, and vice versa
