@@ -17,10 +17,10 @@
       "mpool_id": 0,
       "name": "activation_output_array",
       "nbits": 32,
-      "offset_start": 352,
+      "offset_start": 640,
       "qmn": {},
       "shape": [
-        9,
+        33,
         3,
         24
       ],
@@ -29,7 +29,7 @@
         "W",
         "CH"
       ],
-      "size_bytes": 2592
+      "size_bytes": 9504
     },
     {
       "alignment": 4,
@@ -75,10 +75,10 @@
       "mpool_id": 0,
       "name": "conv2d_output_array",
       "nbits": 32,
-      "offset_start": 352,
+      "offset_start": 640,
       "qmn": {},
       "shape": [
-        9,
+        33,
         3,
         24
       ],
@@ -87,7 +87,7 @@
         "W",
         "CH"
       ],
-      "size_bytes": 2592
+      "size_bytes": 9504
     },
     {
       "alignment": 4,
@@ -106,7 +106,7 @@
       "mpool_id": 0,
       "name": "conv2d_scratch0_array",
       "nbits": 32,
-      "offset_start": 288,
+      "offset_start": 576,
       "qmn": {},
       "shape": [
         16,
@@ -172,7 +172,7 @@
       "mpool_id": 1,
       "name": "dense_1_dense_bias_array",
       "nbits": 32,
-      "offset_start": 12240,
+      "offset_start": 39888,
       "qmn": {},
       "shape": [
         4
@@ -226,7 +226,7 @@
       "mpool_id": 1,
       "name": "dense_1_dense_weights_array",
       "nbits": 32,
-      "offset_start": 12048,
+      "offset_start": 39696,
       "qmn": {},
       "shape": [
         4,
@@ -282,7 +282,7 @@
       "mpool_id": 1,
       "name": "dense_bias_array",
       "nbits": 32,
-      "offset_start": 12000,
+      "offset_start": 39648,
       "qmn": {},
       "shape": [
         12
@@ -340,13 +340,13 @@
       "qmn": {},
       "shape": [
         12,
-        216
+        792
       ],
       "shape_map": [
         "CH",
         "CH_IN"
       ],
-      "size_bytes": 10368
+      "size_bytes": 38016
     },
     {
       "alignment": 4,
@@ -368,7 +368,7 @@
       "offset_start": 0,
       "qmn": {},
       "shape": [
-        24,
+        48,
         3,
         1
       ],
@@ -377,7 +377,7 @@
         "W",
         "CH"
       ],
-      "size_bytes": 288
+      "size_bytes": 576
     },
     {
       "alignment": 4,
@@ -396,10 +396,10 @@
       "mpool_id": 0,
       "name": "max_pooling2d_output_array",
       "nbits": 32,
-      "offset_start": 352,
+      "offset_start": 640,
       "qmn": {},
       "shape": [
-        3,
+        11,
         3,
         24
       ],
@@ -408,52 +408,52 @@
         "W",
         "CH"
       ],
-      "size_bytes": 864
+      "size_bytes": 3168
     }
   ],
   "environment": {
     "generated_model": {
-      "generated_time": "2026-09-06T20:17:38+0200",
+      "generated_time": "2026-09-12T00:08:52+0200",
       "model_files": [
         {
           "name": "network_data.h",
-          "signature": "0xf5de1ff09ebbbf077072b1b06d3c21f5"
+          "signature": "0x54de2598bd1e56e6a242ab8a15c598d1"
         },
         {
           "name": "network_data.c",
-          "signature": "0x0f2345be5908fa80bdf34beb3d205189"
+          "signature": "0xd0084ef412d397becb0f57be4cc8a928"
         },
         {
           "name": "network.h",
-          "signature": "0x3c0d4fd048280f6d8051d42669c27e6f"
+          "signature": "0xd564aa3eefcd5bd18cbb1b8bc2a815a0"
         },
         {
           "name": "network.c",
-          "signature": "0x1959233c6a28500c21cdecfe9a9ea13e"
+          "signature": "0x1083f701b9ca27f276674805e039bee7"
         },
         {
           "name": "network_details.h",
-          "signature": "0x1c5e51ab7632a63d4bdc170cb1b7d7c0"
+          "signature": "0xa79762feb494bd0f26b506e4551915be"
         }
       ],
       "name": "network"
     },
-    "network_signature": "0x5381b004c7b2b590",
+    "network_signature": "0x4c9a71a52d8be557",
     "test_name": "",
     "tools": [
       {
-        "arguments": "analyze -m AI_Runtime/st_ign_wl_24.keras --target stm32u5",
+        "arguments": "analyze -m AI_Runtime/st_ign_wl_48.keras --target stm32u5",
         "environment": [],
         "input_model": {
           "model_files": [
             {
-              "name": "st_ign_wl_24.keras",
-              "signature": "0x182538bb72eca0452f4050f5d48254f9"
+              "name": "st_ign_wl_48.keras",
+              "signature": "0xdab9905d21f7ca7841d6027536d57dc3"
             }
           ],
-          "n_params": 3064,
-          "name": "st_ign_wl_24",
-          "size": 12256,
+          "n_params": 9976,
+          "name": "st_ign_wl_48",
+          "size": 39904,
           "type": "keras"
         },
         "name": "ST.EdgeAI.Core",
@@ -539,7 +539,7 @@
       "inputs": [
         82
       ],
-      "name": "st_ign_wl_24",
+      "name": "st_ign_wl_48",
       "nodes": [
         {
           "attributes": {
@@ -563,7 +563,7 @@
             96,
             99
           ],
-          "macc": 10392,
+          "macc": 38040,
           "mapping": "NODE_SW",
           "name": "conv2d",
           "original_nodes": [
@@ -589,7 +589,7 @@
           "inputs": [
             84
           ],
-          "macc": 648,
+          "macc": 2376,
           "mapping": "NODE_SW",
           "name": "activation",
           "original_nodes": [
@@ -617,7 +617,7 @@
           "inputs": [
             86
           ],
-          "macc": 648,
+          "macc": 2376,
           "mapping": "NODE_SW",
           "name": "max_pooling2d",
           "original_nodes": [
@@ -644,7 +644,7 @@
             102,
             105
           ],
-          "macc": 2604,
+          "macc": 9516,
           "mapping": "NODE_SW",
           "name": "dense",
           "original_nodes": [
@@ -727,7 +727,7 @@
           "name": "input_layer",
           "shape": [
             null,
-            24,
+            48,
             3,
             1
           ],
@@ -767,18 +767,18 @@
   ],
   "json_schema_version": "2.0",
   "memory_footprint": {
-    "activations": 2944,
+    "activations": 10144,
     "io": [
       0,
       0
     ],
-    "kernel_flash": 5742,
+    "kernel_flash": 5746,
     "kernel_ram": 288,
     "series": "stm32u5",
     "toolchain": "arm-none-eabi-gcc (GNU Tools for STM32 14.3.rel1.20251027-0700) 14.3.1 20250623",
     "toolchain_flash": 732,
     "toolchain_ram": 0,
-    "weights": 12256
+    "weights": 39904
   },
   "memory_pools": [
     {
@@ -806,7 +806,7 @@
       "rights": "ACC_WRITE",
       "size_bytes": -1,
       "subpools": [],
-      "used_size_bytes": 2944,
+      "used_size_bytes": 10144,
       "user_allocated": false,
       "virtual": false
     },
@@ -833,7 +833,7 @@
       "rights": "ACC_READ",
       "size_bytes": -1,
       "subpools": [],
-      "used_size_bytes": 12256,
+      "used_size_bytes": 39904,
       "user_allocated": false,
       "virtual": false
     }

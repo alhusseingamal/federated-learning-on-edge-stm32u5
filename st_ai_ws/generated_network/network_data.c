@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    embed_network_data.c
+  * @file    network_data.c
   * @author  AST Embedded Analytics Research Platform
-  * @date    2026-09-12T00:14:21+0200
+  * @date    2026-09-12T00:08:52+0200
   * @brief   AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * Copyright (c) 2026 STMicroelectronics.
@@ -14,9 +14,9 @@
   ******************************************************************************
   */
 
-#include "embed_network_data.h"
+#include "network_data.h"
 STAI_ALIGNED(8)
-const uint64_t g_embed_network_weights_array[4962] = {
+const uint64_t g_network_weights_array[4988] = {
   0x3e314d08bd097fcbU, 0xbd0042c0bd97ebf0U, 0x3c997c403d307131U, 0x3c2accef3d4939b7U,
   0xbcf66aa5bcdd04e7U, 0xbd892b293d415aebU, 0xbd9f0d43bc286d17U, 0x3d1555453bd71027U,
   0x3d83b85b3d3a87eeU, 0x3d4bf1d73d20a529U, 0x3c93ba0d3ca5384aU, 0xbda3bd0ebbba2b12U,
@@ -1257,7 +1257,13 @@ const uint64_t g_embed_network_weights_array[4962] = {
   0xbd69ef7d3e258eadU, 0x3e073834be711bd6U, 0x3d16309b3bfb3415U, 0xbd8d4aeb3e1f1893U,
   0xbd8481393b6b1601U, 0x3d62f4b53c88014eU, 0xbd1daf363d9b36baU, 0xbd0311cdbcbd7a25U,
   0x3e7d38453c39383dU, 0x3e69f9803e4b69b8U, 0x3df674b73e2d1acaU, 0x3e2bc9b0be52449dU,
-  0xbe8d17213e8b14a9U, 0x3e43b9483e0c165aU,
+  0xbe8d17213e8b14a9U, 0x3e43b9483e0c165aU, 0xbe8d7cf93ed2a913U, 0xbe9db17ebed70372U,
+  0x3f1b2592be81ca93U, 0xbe863ffb3ed53708U, 0xbf0bc0b0bed0afc9U, 0x3eb204aebf072fd7U,
+  0x3f128ce8be98975fU, 0x3e9742143e4d2609U, 0x3e9dda5a3f866878U, 0x3ec8fbe0bee6e0f3U,
+  0xbf46dd773ed4cb17U, 0x3ee4f0113f2264adU, 0x3e99ba893eb3a33dU, 0x3e8d18883e36ceb0U,
+  0x3f0f4aacbe6838c2U, 0x3ebdc36fbe52e1caU, 0xbbd2df8cbec7c193U, 0xbe74f080bef3ffe2U,
+  0xbe8f55a8bf240030U, 0x3e94d0f83e3d2c79U, 0xbf0d7481be626f67U, 0x3ec37f913edb4ad2U,
+  0x3d04cf38bec69561U, 0xbe939cfc3f056cafU, 0xbf659835bea5f454U, 0x3ec6ca173ebaaf73U,
 };
 
 

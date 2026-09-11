@@ -77,13 +77,11 @@ TX_THREAD tx_app_thread;
 TX_THREAD press_thread;
 TX_THREAD logger_thread;
 TX_THREAD command_thread;
-TX_THREAD weights_thread;
 
 
 UCHAR *press_thread_stack_ptr;
 UCHAR *logger_thread_stack_ptr;
 UCHAR *command_thread_stack_ptr;
-UCHAR *weights_thread_stack_ptr;
 
 
 TX_QUEUE log_queue;
@@ -108,11 +106,17 @@ TX_SEMAPHORE fl_round_done_sem;
 static __attribute__((aligned(8))) stai_network net_ctx[STAI_EMBED_NETWORK_CONTEXT_SIZE];
 static __attribute__((aligned(8))) uint8_t ai_activations[STAI_EMBED_NETWORK_ACTIVATIONS_SIZE_BYTES];
 
-// Feature & Window Tracking (Exact 50% Overlap)
-#define WINDOW_SIZE 24    // must match the model's architecture/training; The model was trained on windows of 24 samples
-#define OVERLAP     12    // overlap bet. old and new windows; 1 means too little overlap, WINDOW_SIZE-1 is too much overlap, overlap cannot be WINDOW_SIZe
-                          // because that means no new samples are processed
+// ---- OLD: st_ign_wl_24 model ---
+// // Feature & Window Tracking (Exact 50% Overlap)
+// #define WINDOW_SIZE 24    // must match the model's architecture/training; The model was trained on windows of 24 samples
+// #define OVERLAP     12    // overlap bet. old and new windows; 1 means too little overlap, WINDOW_SIZE-1 is too much overlap, overlap cannot be WINDOW_SIZe
+//                           // because that means no new samples are processed
 
+// ---- st_ign_wl_48 model ---
+#define WINDOW_SIZE 48
+#define OVERLAP     24
+
+                          
 #define ACC_AXIS_COUNT 3   // accelerometer has 3 axes (x,y,z)
 #define ACC_TOTAL_WINDOW_LENGTH (WINDOW_SIZE * ACC_AXIS_COUNT)
 
@@ -132,11 +136,8 @@ volatile uint8_t target_label = 0;
 
 static float preprocessed_input[ACC_TOTAL_WINDOW_LENGTH];
 
-
-
-
 // New globals (PV section)
-#define FL_PAYLOAD_BYTES (FL_PAYLOAD_FLOATS * sizeof(float))  // 224
+#define FL_PAYLOAD_BYTES (FL_PAYLOAD_FLOATS * sizeof(float))
 volatile uint8_t awaiting_weights_payload = 0;
 volatile uint32_t weights_bytes_received = 0;
 uint8_t rx_weights_buffer[FL_PAYLOAD_BYTES];
@@ -152,8 +153,6 @@ void logger_thread_entry(ULONG input);
 
 void command_thread_entry(ULONG input);
 void process_command(void);
-
-void weights_thread_entry(ULONG input);
 
 // Preprocessing routine from Lab baseline (IIR gravity + Rodrigues)
 extern void HAR_PreprocessWindow(const float *in, float *out, unsigned int n_samples);
@@ -196,6 +195,7 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   tx_semaphore_create(&command_sem, "Command SEM", 0);    // Semaphore
 
   // Initialize Head Mutex & Weights
+  // It is better to initialize here so that the model weights and mutex are guaranteed to exist before any thread starts executing
   tx_mutex_create(&head_mutex, "Head_Mutex", TX_NO_INHERIT);
   trainable_head_init(&head_mutex);
 
@@ -217,10 +217,6 @@ UINT App_ThreadX_Init(VOID *memory_ptr)
   // Command processing thread
   tx_byte_allocate(byte_pool, (VOID **)&command_thread_stack_ptr, 1024, TX_NO_WAIT);
   tx_thread_create(&command_thread, "Command", command_thread_entry, 0, command_thread_stack_ptr, 1024, 15, 15, TX_NO_TIME_SLICE, TX_AUTO_START);
-  
-  // weights processing thread
-  // tx_byte_allocate(byte_pool, (VOID **)&weights_thread_stack_ptr, 1024, TX_NO_WAIT);
-  // tx_thread_create(&weights_thread, "Weights", weights_thread_entry, 0, weights_thread_stack_ptr, 1024, 15, 15, TX_NO_TIME_SLICE, TX_AUTO_START);  
 
   /* USER CODE END App_ThreadX_Init */
 
@@ -291,7 +287,7 @@ void tx_sensor_entry(ULONG thread_input) {
 
         sample_idx++;
 
-        // Process Window when 24 samples are ready
+        // Process Window when WINDOW_SIZE samples are ready
         if (sample_idx >= WINDOW_SIZE) {
             
             // a. Preprocess Accelerometer (Gravity removal + Rodrigues rotation)
@@ -542,19 +538,6 @@ void process_command(void)
 
   cmd_idx = 0;
 }
-
-
-
-// // New dedicated thread (same style as command_thread/logger_thread)
-// void weights_thread_entry(ULONG input)
-// {
-//   while (1)
-//   {
-//     tx_semaphore_get(&weights_ready_sem, TX_WAIT_FOREVER);
-//     trainable_head_import_weights((float *)rx_weights_buffer);
-//     printf("[board] ok: weights updated\r\n");
-//   }
-// }
 
 
 void logger_thread_entry(ULONG input) 

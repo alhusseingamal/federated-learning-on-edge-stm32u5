@@ -1,70 +1,70 @@
 ST Edge AI Core v4.0.1-20581 7ed50de05
-Created date          : 2026-09-06 22:41:08
-Parameters            : generate -m AI_Runtime/st_ign_wl_24_embed.onnx --target stm32u5 --name embed_network -o HAR/AI_EMBED
+Created date          : 2026-09-12 00:14:23
+Parameters            : generate --model AI_Runtime/st_ign_wl_48_embed.onnx --target stm32u5 --optimization balanced --name embed_network --output HAR/AI_E
 
 Exec/report summary (generate)
-----------------------------------------------------------------------------------------------------------------
-model file         :   /mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/AI_Runtime/st_ign_wl_24_embed.onnx   
-type               :   onnx                                                                                     
-c_name             :   embed_network                                                                            
-compression        :   lossless                                                                                 
-options            :   allocate-inputs, allocate-outputs, use-lite-runtime, use-st-ai                           
-optimization       :   balanced                                                                                 
-target/series      :   stm32u5                                                                                  
-workspace dir      :   /mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/st_ai_ws                             
-output dir         :   /mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/HAR/AI_EMBED                         
-model_fmt          :   float                                                                                    
-model_name         :   st_ign_wl_24_embed                                                                       
-model_hash         :   0xbea368760f8f6dfe3cead4742d6fb8b7                                                       
-params #           :   3,012 items (11.77 KiB)                                                                  
-----------------------------------------------------------------------------------------------------------------
-input 1/1          :   'input_tensor', f32(1x24x3x1), 288 Bytes, activations                                    
-output 1/1         :   'Identity0', f32(1x12), 48 Bytes, activations                                            
-macc               :   14,328                                                                                   
-weights (ro)       :   12,048 B (11.77 KiB) (1 segment)                                                         
-activations (rw)   :   2,944 B (2.88 KiB) (1 segment) *                                                         
-ram (total)        :   2,944 B (2.88 KiB) = 2,944 + 0 + 0                                                       
-----------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+model file         :   /mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/AI_Runtime/st_ign_wl_48_embed.onnx   
+type               :   onnx                                                                                   
+c_name             :   embed_network                                                                          
+compression        :   lossless                                                                               
+options            :   allocate-inputs, allocate-outputs, use-lite-runtime, use-st-ai                         
+optimization       :   balanced                                                                               
+target/series      :   stm32u5                                                                                
+workspace dir      :   /mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/st_ai_ws                             
+output dir         :   /mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/HAR/AI_E                             
+model_fmt          :   float                                                                                  
+model_name         :   st_ign_wl_48_embed                                                                     
+model_hash         :   0x4449b71654c541636187ccfe91ee599b                                                     
+params #           :   9,924 items (38.77 KiB)                                                                
+--------------------------------------------------------------------------------------------------------------
+input 1/1          :   'input_tensor', f32(1x48x3x1), 576 Bytes, activations                                  
+output 1/1         :   'Identity0', f32(1x12), 48 Bytes, activations                                          
+macc               :   52,380                                                                                 
+weights (ro)       :   39,696 B (38.77 KiB) (1 segment)                                                       
+activations (rw)   :   10,144 B (9.91 KiB) (1 segment) *                                                      
+ram (total)        :   10,144 B (9.91 KiB) = 10,144 + 0 + 0                                                   
+--------------------------------------------------------------------------------------------------------------
 (*) 'input'/'output' buffers are allocated in the activations buffer
 
-Model name - st_ign_wl_24_embed
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-m_id   layer (type,original)                                   oshape               param/size         macc                     connected to   | c_size         c_macc            c_type             
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-7      functional_1_dense..ariableOp0 (Placeholder, Gemm)      [b:216,c:12]         2,592/10,368                                               | +48(+0.5%)     +2,604(+100.0%)   Dense_[o][4]       
-       functional_1_dense..ariableOp0 (Placeholder, Gemm)      [b:12]               12/48                                                      | -48(-100.0%)                     
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-0      input_tensor (Input, )                                  [b:1,h:3,w:1,c:24]                                                              |                                  
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-1      functional_1_conv2..iasAdd__70 (Reshape, Reshape)       [b:1,h:24,w:3,c:1]                                               input_tensor   |                +36(+100.0%)      Transpose_[0]      
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-2      functional_1_conv2d_1_BiasAdd0 (Conv2D, Conv)           [b:1,h:9,w:3,c:24]   408/1,632        10,392   functional_1_conv2..iasAdd__70   |                                  Conv2D_[1]         
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-3      functional_1_activ..on_1_Relu0 (Nonlinearity, Relu)     [b:1,h:9,w:3,c:24]                       648   functional_1_conv2d_1_BiasAdd0   |                                  Nonlinearity_[2]   
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-4      functional_1_max_p..MaxPool2d0 (Pool, MaxPool)          [b:1,h:3,w:3,c:24]                       648   functional_1_activ..on_1_Relu0   |                                  Pool_[3]           
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-5      functional_1_max_p..ool2d__100 (Transpose, Transpose)   [b:1,h:3,w:24,c:3]                       108   functional_1_max_p..MaxPool2d0   |                -108(-100.0%)     
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-6      functional_1_flatt..1_Reshape0 (Reshape, Reshape)       [b:1,c:216]                                    functional_1_max_p..ool2d__100   |                                  
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-7      Identity0 (Gemm, Gemm)                                  [b:1,c:12]                             2,604   functional_1_flatt..1_Reshape0   |                -2,604(-100.0%)   
-                                                                                                              functional_1_dense..ariableOp0   | 
-                                                                                                              functional_1_dense..ariableOp0   | 
------- ------------------------------------------------------- -------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
-model/c-model: macc=14,400/14,328 -72(-0.5%) weights=12,048/12,048  activations=--/2,944 io=--/0
+Model name - st_ign_wl_48_embed
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+m_id   layer (type,original)                                   oshape                param/size         macc                     connected to   | c_size         c_macc            c_type             
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+7      functional_1_dense..ariableOp0 (Placeholder, Gemm)      [b:792,c:12]          9,504/38,016                                               | +48(+0.1%)     +9,516(+100.0%)   Dense_[o][4]       
+       functional_1_dense..ariableOp0 (Placeholder, Gemm)      [b:12]                12/48                                                      | -48(-100.0%)                     
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+0      input_tensor (Input, )                                  [b:1,h:3,w:1,c:48]                                                               |                                  
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+1      functional_1_conv2..iasAdd__70 (Reshape, Reshape)       [b:1,h:48,w:3,c:1]                                                input_tensor   |                +72(+100.0%)      Transpose_[0]      
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+2      functional_1_conv2d_1_BiasAdd0 (Conv2D, Conv)           [b:1,h:33,w:3,c:24]   408/1,632        38,040   functional_1_conv2..iasAdd__70   |                                  Conv2D_[1]         
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+3      functional_1_activ..on_1_Relu0 (Nonlinearity, Relu)     [b:1,h:33,w:3,c:24]                     2,376   functional_1_conv2d_1_BiasAdd0   |                                  Nonlinearity_[2]   
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+4      functional_1_max_p..MaxPool2d0 (Pool, MaxPool)          [b:1,h:11,w:3,c:24]                     2,376   functional_1_activ..on_1_Relu0   |                                  Pool_[3]           
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+5      functional_1_max_p..ool2d__100 (Transpose, Transpose)   [b:1,h:3,w:24,c:11]                       396   functional_1_max_p..MaxPool2d0   |                -396(-100.0%)     
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+6      functional_1_flatt..1_Reshape0 (Reshape, Reshape)       [b:1,c:792]                                     functional_1_max_p..ool2d__100   |                                  
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+7      Identity0 (Gemm, Gemm)                                  [b:1,c:12]                              9,516   functional_1_flatt..1_Reshape0   |                -9,516(-100.0%)   
+                                                                                                               functional_1_dense..ariableOp0   | 
+                                                                                                               functional_1_dense..ariableOp0   | 
+------ ------------------------------------------------------- --------------------- -------------- -------- -------------------------------- --- -------------- ----------------- ------------------ 
+model/c-model: macc=52,704/52,380 -324(-0.6%) weights=39,696/39,696  activations=--/10,144 io=--/0
 
 
 
 Generated C-graph summary
 ------------------------------------------------------------------------------------------------------------------------
-model name            : st_ign_wl_24_embed
+model name            : st_ign_wl_48_embed
 c-name                : embed_network
 c-node #              : 5
 c-array #             : 11
-activations size      : 2944 (1 segment)
-weights size          : 12048 (1 segment)
-macc                  : 14328
+activations size      : 10144 (1 segment)
+weights size          : 39696 (1 segment)
+macc                  : 52380
 inputs                : ['input_tensor_output']
 outputs               : ['Identity0_output']
 
@@ -74,38 +74,38 @@ c_id   name (*_array)                                        item/size    domain
 ------ ----------------------------------------------------- ------------ ------------------------- ------------- --------- 
 0      Identity0_bias                                        12/48        weights/weights           const float             
 1      Identity0_output                                      12/48        activations/**default**   float         /output   
-2      Identity0_weights                                     2592/10368   weights/weights           const float             
-3      functional_1_activation_1_Relu0_output                648/2592     activations/**default**   float                   
+2      Identity0_weights                                     9504/38016   weights/weights           const float             
+3      functional_1_activation_1_Relu0_output                2376/9504    activations/**default**   float                   
 4      functional_1_conv2d_1_BiasAdd0_bias                   24/96        weights/weights           const float             
-5      functional_1_conv2d_1_BiasAdd0_output                 648/2592     activations/**default**   float                   
+5      functional_1_conv2d_1_BiasAdd0_output                 2376/9504    activations/**default**   float                   
 6      functional_1_conv2d_1_BiasAdd0_scratch0               16/64        activations/**default**   float                   
 7      functional_1_conv2d_1_BiasAdd0_weights                384/1536     weights/weights           const float             
-8      functional_1_conv2d_1_BiasAdd__70_to_chfirst_output   72/288       activations/**default**   float                   
-9      functional_1_max_pooling2d_1_MaxPool2d0_output        216/864      activations/**default**   float                   
-10     input_tensor_output                                   72/288       activations/**default**   float         /input    
+8      functional_1_conv2d_1_BiasAdd__70_to_chfirst_output   144/576      activations/**default**   float                   
+9      functional_1_max_pooling2d_1_MaxPool2d0_output        792/3168     activations/**default**   float                   
+10     input_tensor_output                                   144/576      activations/**default**   float         /input    
 ------ ----------------------------------------------------- ------------ ------------------------- ------------- --------- 
 
 C-Layers (5)
 ------ ---------------------------------------------- ---- --------------- ------- ------- -------------------------------------------------------- -------------------- 
 c_id   name (*_layer)                                 id   layer_type      macc    rom     tensors                                                  shape (array id)     
 ------ ---------------------------------------------- ---- --------------- ------- ------- -------------------------------------------------------- -------------------- 
-0      functional_1_conv2d_1_BiasAdd__70_to_chfirst   1    Transpose       36      0       I: input_tensor_output                                   f32(1x24x3x1) (10)   
-                                                                                           O: functional_1_conv2d_1_BiasAdd__70_to_chfirst_output   f32(1x24x3x1) (8)    
+0      functional_1_conv2d_1_BiasAdd__70_to_chfirst   1    Transpose       72      0       I: input_tensor_output                                   f32(1x48x3x1) (10)   
+                                                                                           O: functional_1_conv2d_1_BiasAdd__70_to_chfirst_output   f32(1x48x3x1) (8)    
 ------ ---------------------------------------------- ---- --------------- ------- ------- -------------------------------------------------------- -------------------- 
-1      functional_1_conv2d_1_BiasAdd0                 2    Conv2D          10392   1632    I: functional_1_conv2d_1_BiasAdd__70_to_chfirst_output   f32(1x24x3x1) (8)    
+1      functional_1_conv2d_1_BiasAdd0                 2    Conv2D          38040   1632    I: functional_1_conv2d_1_BiasAdd__70_to_chfirst_output   f32(1x48x3x1) (8)    
                                                                                            S: functional_1_conv2d_1_BiasAdd0_scratch0                                    
                                                                                            W: functional_1_conv2d_1_BiasAdd0_weights                f32(24x16x1x1) (7)   
                                                                                            W: functional_1_conv2d_1_BiasAdd0_bias                   f32(24) (4)          
-                                                                                           O: functional_1_conv2d_1_BiasAdd0_output                 f32(1x9x3x24) (5)    
+                                                                                           O: functional_1_conv2d_1_BiasAdd0_output                 f32(1x33x3x24) (5)   
 ------ ---------------------------------------------- ---- --------------- ------- ------- -------------------------------------------------------- -------------------- 
-2      functional_1_activation_1_Relu0                3    Nonlinearity    648     0       I: functional_1_conv2d_1_BiasAdd0_output                 f32(1x9x3x24) (5)    
-                                                                                           O: functional_1_activation_1_Relu0_output                f32(1x9x3x24) (3)    
+2      functional_1_activation_1_Relu0                3    Nonlinearity    2376    0       I: functional_1_conv2d_1_BiasAdd0_output                 f32(1x33x3x24) (5)   
+                                                                                           O: functional_1_activation_1_Relu0_output                f32(1x33x3x24) (3)   
 ------ ---------------------------------------------- ---- --------------- ------- ------- -------------------------------------------------------- -------------------- 
-3      functional_1_max_pooling2d_1_MaxPool2d0        4    Pool            648     0       I: functional_1_activation_1_Relu0_output                f32(1x9x3x24) (3)    
-                                                                                           O: functional_1_max_pooling2d_1_MaxPool2d0_output        f32(1x3x3x24) (9)    
+3      functional_1_max_pooling2d_1_MaxPool2d0        4    Pool            2376    0       I: functional_1_activation_1_Relu0_output                f32(1x33x3x24) (3)   
+                                                                                           O: functional_1_max_pooling2d_1_MaxPool2d0_output        f32(1x11x3x24) (9)   
 ------ ---------------------------------------------- ---- --------------- ------- ------- -------------------------------------------------------- -------------------- 
-4      Identity0                                      7    Dense           2604    10416   I: functional_1_max_pooling2d_1_MaxPool2d0_output        f32(1x3x3x24) (9)    
-                                                                                           W: Identity0_weights                                     f32(12x216) (2)      
+4      Identity0                                      7    Dense           9516    38064   I: functional_1_max_pooling2d_1_MaxPool2d0_output        f32(1x11x3x24) (9)   
+                                                                                           W: Identity0_weights                                     f32(12x792) (2)      
                                                                                            W: Identity0_bias                                        f32(12) (0)          
                                                                                            O: Identity0_output                                      f32(1x12) (1)        
 ------ ---------------------------------------------- ---- --------------- ------- ------- -------------------------------------------------------- -------------------- 
@@ -116,68 +116,68 @@ Number of operations per c-layer
 ------- ------ ------------------------------------------------ -------- -------------- 
 c_id    m_id   name (type)                                           #op           type 
 ------- ------ ------------------------------------------------ -------- -------------- 
-0       1      functional_1_conv2..to_chfirst (Transpose)             36   smul_f32_f32 
-1       2      functional_1_conv2d_1_BiasAdd0 (Conv2D)            10,392   smul_f32_f32 
-2       3      functional_1_activ..on_1_Relu0 (Nonlinearity)         648     op_f32_f32 
-3       4      functional_1_max_p..MaxPool2d0 (Pool_Max)             648   smul_f32_f32 
-4       7      Identity0 (Dense)                                   2,604   smul_f32_f32 
+0       1      functional_1_conv2..to_chfirst (Transpose)             72   smul_f32_f32 
+1       2      functional_1_conv2d_1_BiasAdd0 (Conv2D)            38,040   smul_f32_f32 
+2       3      functional_1_activ..on_1_Relu0 (Nonlinearity)       2,376     op_f32_f32 
+3       4      functional_1_max_p..MaxPool2d0 (Pool_Max)           2,376   smul_f32_f32 
+4       7      Identity0 (Dense)                                   9,516   smul_f32_f32 
 ------- ------ ------------------------------------------------ -------- -------------- 
-total                                                             14,328 
+total                                                             52,380 
 
 Number of operation types
 ---------------- -------- ----------- 
 operation type          #           % 
 ---------------- -------- ----------- 
-smul_f32_f32       13,680       95.5% 
-op_f32_f32            648        4.5% 
+smul_f32_f32       50,004       95.5% 
+op_f32_f32          2,376        4.5% 
 
 Complexity report (model)
 ------ ------------------------------------------ ------------------------- ------------------------- ------ 
 m_id   name                                       c_macc                    c_rom                     c_id   
 ------ ------------------------------------------ ------------------------- ------------------------- ------ 
-7      functional_1_dense_1_Cast_Re..ariableOp0   ||||              18.2%   ||||||||||||||||  86.5%   [4]    
-1      functional_1_conv2d_1_BiasAdd__70          |                  0.3%   |                  0.0%   [0]    
-2      functional_1_conv2d_1_BiasAdd0             ||||||||||||||||  72.5%   |||               13.5%   [1]    
+7      functional_1_dense_1_Cast_Re..ariableOp0   ||||              18.2%   ||||||||||||||||  95.9%   [4]    
+1      functional_1_conv2d_1_BiasAdd__70          |                  0.1%   |                  0.0%   [0]    
+2      functional_1_conv2d_1_BiasAdd0             ||||||||||||||||  72.6%   |                  4.1%   [1]    
 3      functional_1_activation_1_Relu0            |                  4.5%   |                  0.0%   [2]    
 4      functional_1_max_pooling2d_1_MaxPool2d0    |                  4.5%   |                  0.0%   [3]    
 ------ ------------------------------------------ ------------------------- ------------------------- ------ 
-macc=14,328 weights=12,048 act=2,944 ram_io=0
+macc=52,380 weights=39,696 act=10,144 ram_io=0
  
  Requested memory size by section - "stm32u5" target
- ------------------------------- ------- -------- ------ ------- 
- module                             text   rodata   data     bss 
- ------------------------------- ------- -------- ------ ------- 
- NetworkRuntime1201_CM33_GCC.a     3,540        0      0       0 
- embed_network.o                   1,138       64    532      32 
- lib (toolchain)*                      0        0      0       0 
- ------------------------------- ------- -------- ------ ------- 
- RT total**                        4,678       64    532      32 
- ------------------------------- ------- -------- ------ ------- 
- weights                               0   12,048      0       0 
- activations                           0        0      0   2,944 
- states                                0        0      0       0 
- io                                    0        0      0       0 
- ------------------------------- ------- -------- ------ ------- 
- TOTAL                             4,678   12,112    532   2,976 
- ------------------------------- ------- -------- ------ ------- 
+ ------------------------------- ------- -------- ------ -------- 
+ module                             text   rodata   data      bss 
+ ------------------------------- ------- -------- ------ -------- 
+ NetworkRuntime1201_CM33_GCC.a     3,540        0      0        0 
+ embed_network.o                   1,158       64    532       32 
+ lib (toolchain)*                      0        0      0        0 
+ ------------------------------- ------- -------- ------ -------- 
+ RT total**                        4,698       64    532       32 
+ ------------------------------- ------- -------- ------ -------- 
+ weights                               0   39,696      0        0 
+ activations                           0        0      0   10,144 
+ states                                0        0      0        0 
+ io                                    0        0      0        0 
+ ------------------------------- ------- -------- ------ -------- 
+ TOTAL                             4,698   39,760    532   10,176 
+ ------------------------------- ------- -------- ------ -------- 
  *  toolchain objects (libm/libgcc*)
  ** RT AI runtime objects (kernels+infrastructure)
   
   Summary - "stm32u5" target
-  ---------------------------------------------------
-               FLASH (ro)      %*   RAM (rw)       % 
-  ---------------------------------------------------
-  RT total          5,274   30.4%        564   16.1% 
-  ---------------------------------------------------
-  TOTAL            17,322              3,508         
-  ---------------------------------------------------
+  --------------------------------------------------
+               FLASH (ro)      %*   RAM (rw)      % 
+  --------------------------------------------------
+  RT total          5,294   11.8%        564   5.3% 
+  --------------------------------------------------
+  TOTAL            44,990             10,708        
+  --------------------------------------------------
   *  rt/total
 
 
 Generated files (5)
------------------------------------------------------------------------------------------- 
-/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/HAR/AI_EMBED/embed_network_data.h      
-/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/HAR/AI_EMBED/embed_network_data.c      
-/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/HAR/AI_EMBED/embed_network.h           
-/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/HAR/AI_EMBED/embed_network.c           
-/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/task/HAR/AI_EMBED/embed_network_details.h   
+------------------------------------------------------------------------------------ 
+/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/HAR/AI_E/embed_network_data.h      
+/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/HAR/AI_E/embed_network_data.c      
+/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/HAR/AI_E/embed_network.h           
+/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/HAR/AI_E/embed_network.c           
+/mnt/data1/KIT/studies/CES/IoT/iot-lab/PROJECT/fl/HAR/AI_E/embed_network_details.h   

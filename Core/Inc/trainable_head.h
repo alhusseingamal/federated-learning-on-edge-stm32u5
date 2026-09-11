@@ -10,15 +10,16 @@
 #define HEAD_CNN_FEATURES      12
 
 // Extra Head
-#define FEAT_GYRO       HEAD_CNN_FEATURES        // index 12
-// #define FEAT_PRESSURE   (HEAD_CNN_FEATURES + 1)  // index 13
+#define NUM_NEW_FEATURES 1
+#define FEAT_GYRO       HEAD_CNN_FEATURES        // Gyroscope: index 12
+// #define FEAT_PRESSURE   (HEAD_CNN_FEATURES + 1)  // Pressure: index 13
 
 // Final Model
-#define HEAD_TOTAL_FEATURES    13  // 12 CNN embeddings + 1 Gyroscope rotational energy feature
+#define HEAD_TOTAL_FEATURES    (HEAD_CNN_FEATURES + NUM_NEW_FEATURES)
 #define HEAD_FLAT_SIZE          (HEAD_NUM_CLASSES * HEAD_TOTAL_FEATURES + HEAD_NUM_CLASSES)
 
 
-#define FL_PAYLOAD_FLOATS (HEAD_NUM_CLASSES*HEAD_TOTAL_FEATURES + HEAD_NUM_CLASSES)
+#define FL_PAYLOAD_FLOATS HEAD_FLAT_SIZE
 
 #ifdef __cplusplus
 extern "C" {

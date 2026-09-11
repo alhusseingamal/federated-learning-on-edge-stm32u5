@@ -1,8 +1,8 @@
 /**
   ******************************************************************************
-  * @file    embed_network.h
+  * @file    network.h
   * @author  AST Embedded Analytics Research Platform
-  * @date    2026-09-12T00:14:21+0200
+  * @date    2026-09-12T00:08:52+0200
   * @brief   ST.AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention
@@ -15,131 +15,131 @@
   * If no LICENSE file comes with this software, it is provided AS-IS.
   ******************************************************************************
   */
-#ifndef STAI_EMBED_NETWORK_H
-#define STAI_EMBED_NETWORK_H
+#ifndef STAI_NETWORK_H
+#define STAI_NETWORK_H
 
 #include "stai.h"
 #include "stai_debug.h"
 
 /*****************************************************************************/
 /*  Original model name and signature  */
-#define STAI_EMBED_NETWORK_ORIGIN_MODEL_NAME         "st_ign_wl_48_embed"
-#define STAI_EMBED_NETWORK_ORIGIN_MODEL_SIGNATURE    "0x4449b71654c541636187ccfe91ee599b"
+#define STAI_NETWORK_ORIGIN_MODEL_NAME         "st_ign_wl_48"
+#define STAI_NETWORK_ORIGIN_MODEL_SIGNATURE    "0xdab9905d21f7ca7841d6027536d57dc3"
 
 /*  Generated model name and signature  */
-#define STAI_EMBED_NETWORK_MODEL_NAME                "embed_network"
-#define STAI_EMBED_NETWORK_MODEL_SIGNATURE           (0xed1a63475b73b951)
+#define STAI_NETWORK_MODEL_NAME                "network"
+#define STAI_NETWORK_MODEL_SIGNATURE           (0x4c9a71a52d8be557)
 
 
 /*****************************************************************************/
 /*  Macros to declare network context size and required alignment  */
-#define STAI_EMBED_NETWORK_CONTEXT_ALIGNMENT   8
-#define STAI_EMBED_NETWORK_CONTEXT_SIZE        (sizeof(_stai_embed_network_context))
+#define STAI_NETWORK_CONTEXT_ALIGNMENT   8
+#define STAI_NETWORK_CONTEXT_SIZE        (sizeof(_stai_network_context))
 
 /*  Macro to declare network flags  */
-#define STAI_EMBED_NETWORK_FLAGS               (STAI_FLAG_INPUTS|STAI_FLAG_OUTPUTS|STAI_FLAG_WEIGHTS)
+#define STAI_NETWORK_FLAGS               (STAI_FLAG_INPUTS|STAI_FLAG_OUTPUTS|STAI_FLAG_WEIGHTS)
 
 /*  Macro to declare number of network C nodes generated  */
-#define STAI_EMBED_NETWORK_NODES_NUM           (5)
+#define STAI_NETWORK_NODES_NUM           (6)
 
 /*  Macro to declare number macc for generated network model  */
-#define STAI_EMBED_NETWORK_MACC_NUM            (52380)
+#define STAI_NETWORK_MACC_NUM            (52420)
 
 /*  Macros to declare input buffers characteristics  */
-#define STAI_EMBED_NETWORK_IN_NUM              (1)
-#define STAI_EMBED_NETWORK_IN_SIZE_BYTES       (580)
+#define STAI_NETWORK_IN_NUM              (1)
+#define STAI_NETWORK_IN_SIZE_BYTES       (580)
 
-#define STAI_EMBED_NETWORK_IN_ALIGNMENTS \
+#define STAI_NETWORK_IN_ALIGNMENTS \
   { 4}
-#define STAI_EMBED_NETWORK_IN_NAMES \
+#define STAI_NETWORK_IN_NAMES \
   { NULL}
-#define STAI_EMBED_NETWORK_IN_FORMATS \
+#define STAI_NETWORK_IN_FORMATS \
   { STAI_FORMAT_FLOAT32}
-#define STAI_EMBED_NETWORK_IN_SIZES \
+#define STAI_NETWORK_IN_SIZES \
   {144}
-#define STAI_EMBED_NETWORK_IN_SIZES_BYTES \
+#define STAI_NETWORK_IN_SIZES_BYTES \
   {576}
 
-#define STAI_EMBED_NETWORK_IN_1_ALIGNMENT   4
-#define STAI_EMBED_NETWORK_IN_1_NAME        (NULL)
-#define STAI_EMBED_NETWORK_IN_1_FLAGS       (STAI_FLAG_INPUTS|STAI_FLAG_PREALLOCATED|STAI_FLAG_CHANNEL_FIRST|STAI_FLAG_HAS_BATCH)
-#define STAI_EMBED_NETWORK_IN_1_FORMAT      (STAI_FORMAT_FLOAT32)
-#define STAI_EMBED_NETWORK_IN_1_SHAPE       {1,48,3,1}
-#define STAI_EMBED_NETWORK_IN_1_BATCH       (1)
-#define STAI_EMBED_NETWORK_IN_1_CHANNEL     (48)
-#define STAI_EMBED_NETWORK_IN_1_HEIGHT      (3)
-#define STAI_EMBED_NETWORK_IN_1_WIDTH       (1)
-#define STAI_EMBED_NETWORK_IN_1_RANK        (3)
-#define STAI_EMBED_NETWORK_IN_1_SIZE        (144)
-#define STAI_EMBED_NETWORK_IN_1_SIZE_BYTES  (576)
+#define STAI_NETWORK_IN_1_ALIGNMENT   4
+#define STAI_NETWORK_IN_1_NAME        (NULL)
+#define STAI_NETWORK_IN_1_FLAGS       (STAI_FLAG_INPUTS|STAI_FLAG_PREALLOCATED|STAI_FLAG_CHANNEL_LAST|STAI_FLAG_HAS_BATCH)
+#define STAI_NETWORK_IN_1_FORMAT      (STAI_FORMAT_FLOAT32)
+#define STAI_NETWORK_IN_1_SHAPE       {1,48,3,1}
+#define STAI_NETWORK_IN_1_BATCH       (1)
+#define STAI_NETWORK_IN_1_HEIGHT      (48)
+#define STAI_NETWORK_IN_1_WIDTH       (3)
+#define STAI_NETWORK_IN_1_CHANNEL     (1)
+#define STAI_NETWORK_IN_1_RANK        (3)
+#define STAI_NETWORK_IN_1_SIZE        (144)
+#define STAI_NETWORK_IN_1_SIZE_BYTES  (576)
 
 /*****************************************************************************/
 /*  Macros to declare output buffers characteristics  */
-#define STAI_EMBED_NETWORK_OUT_NUM             (1)
-#define STAI_EMBED_NETWORK_OUT_SIZE_BYTES      (52)
-#define STAI_EMBED_NETWORK_OUT_ALIGNMENTS \
+#define STAI_NETWORK_OUT_NUM             (1)
+#define STAI_NETWORK_OUT_SIZE_BYTES      (20)
+#define STAI_NETWORK_OUT_ALIGNMENTS \
   { 4}
-#define STAI_EMBED_NETWORK_OUT_NAMES \
+#define STAI_NETWORK_OUT_NAMES \
   { NULL}
-#define STAI_EMBED_NETWORK_OUT_FORMATS \
+#define STAI_NETWORK_OUT_FORMATS \
   { STAI_FORMAT_FLOAT32}
-#define STAI_EMBED_NETWORK_OUT_SIZES \
-  { 12}
-#define STAI_EMBED_NETWORK_OUT_SIZES_BYTES \
-  {48}
+#define STAI_NETWORK_OUT_SIZES \
+  { 4}
+#define STAI_NETWORK_OUT_SIZES_BYTES \
+  {16}
 
-#define STAI_EMBED_NETWORK_OUT_1_ALIGNMENT   4
-#define STAI_EMBED_NETWORK_OUT_1_NAME        (NULL)
-#define STAI_EMBED_NETWORK_OUT_1_FLAGS       (STAI_FLAG_OUTPUTS|STAI_FLAG_PREALLOCATED|STAI_FLAG_CHANNEL_LAST|STAI_FLAG_HAS_BATCH)
-#define STAI_EMBED_NETWORK_OUT_1_FORMAT      (STAI_FORMAT_FLOAT32)
-#define STAI_EMBED_NETWORK_OUT_1_SHAPE       {1,12}
-#define STAI_EMBED_NETWORK_OUT_1_BATCH       (1)
-#define STAI_EMBED_NETWORK_OUT_1_CHANNEL     (12)
-#define STAI_EMBED_NETWORK_OUT_1_RANK        (1)
-#define STAI_EMBED_NETWORK_OUT_1_SIZE        ((12))
-#define STAI_EMBED_NETWORK_OUT_1_SIZE_BYTES  (48)
+#define STAI_NETWORK_OUT_1_ALIGNMENT   4
+#define STAI_NETWORK_OUT_1_NAME        (NULL)
+#define STAI_NETWORK_OUT_1_FLAGS       (STAI_FLAG_OUTPUTS|STAI_FLAG_PREALLOCATED|STAI_FLAG_CHANNEL_LAST|STAI_FLAG_HAS_BATCH)
+#define STAI_NETWORK_OUT_1_FORMAT      (STAI_FORMAT_FLOAT32)
+#define STAI_NETWORK_OUT_1_SHAPE       {1,4}
+#define STAI_NETWORK_OUT_1_BATCH       (1)
+#define STAI_NETWORK_OUT_1_CHANNEL     (4)
+#define STAI_NETWORK_OUT_1_RANK        (1)
+#define STAI_NETWORK_OUT_1_SIZE        ((4))
+#define STAI_NETWORK_OUT_1_SIZE_BYTES  (16)
 
 /*****************************************************************************/
 /*  Macros to declare activations buffers characteristics  */
-#define STAI_EMBED_NETWORK_ACTIVATIONS_SIZE              (10144)
-#define STAI_EMBED_NETWORK_ACTIVATIONS_SIZE_BYTES        (10144)
-#define STAI_EMBED_NETWORK_ACTIVATIONS_ALIGNMENTS \
+#define STAI_NETWORK_ACTIVATIONS_SIZE              (10144)
+#define STAI_NETWORK_ACTIVATIONS_SIZE_BYTES        (10144)
+#define STAI_NETWORK_ACTIVATIONS_ALIGNMENTS \
   { 4}
-#define STAI_EMBED_NETWORK_ACTIVATIONS_SIZES \
+#define STAI_NETWORK_ACTIVATIONS_SIZES \
   { 10144}
-#define STAI_EMBED_NETWORK_ACTIVATIONS_NUM               (1)
+#define STAI_NETWORK_ACTIVATIONS_NUM               (1)
 
-#define STAI_EMBED_NETWORK_ACTIVATION_1_FLAGS      (STAI_FLAG_ACTIVATIONS)
-#define STAI_EMBED_NETWORK_ACTIVATION_1_SIZE       (10144)
-#define STAI_EMBED_NETWORK_ACTIVATION_1_SIZE_BYTES (10144)
-#define STAI_EMBED_NETWORK_ACTIVATION_1_ALIGNMENT  4
+#define STAI_NETWORK_ACTIVATION_1_FLAGS      (STAI_FLAG_ACTIVATIONS)
+#define STAI_NETWORK_ACTIVATION_1_SIZE       (10144)
+#define STAI_NETWORK_ACTIVATION_1_SIZE_BYTES (10144)
+#define STAI_NETWORK_ACTIVATION_1_ALIGNMENT  4
 /*  Macros to declare weights buffers characteristics  */
 
-#define STAI_EMBED_NETWORK_WEIGHTS_NUM                  (1)
-#define STAI_EMBED_NETWORK_WEIGHTS_SIZE                  (39696)
-#define STAI_EMBED_NETWORK_WEIGHTS_SIZE_BYTES            (39696)
-#define STAI_EMBED_NETWORK_WEIGHTS_ALIGNMENTS \
+#define STAI_NETWORK_WEIGHTS_NUM                  (1)
+#define STAI_NETWORK_WEIGHTS_SIZE                  (39904)
+#define STAI_NETWORK_WEIGHTS_SIZE_BYTES            (39904)
+#define STAI_NETWORK_WEIGHTS_ALIGNMENTS \
   { 4}
-#define STAI_EMBED_NETWORK_WEIGHTS_SIZES \
-  { 39696}
-#define STAI_EMBED_NETWORK_WEIGHTS_NUM        (1)
-#define STAI_EMBED_NETWORK_WEIGHT_1_FLAGS       ((STAI_FLAG_PREALLOCATED))
-#define STAI_EMBED_NETWORK_WEIGHT_1_SIZE        (39696)
-#define STAI_EMBED_NETWORK_WEIGHT_1_SIZE_BYTES  (39696)
+#define STAI_NETWORK_WEIGHTS_SIZES \
+  { 39904}
+#define STAI_NETWORK_WEIGHTS_NUM        (1)
+#define STAI_NETWORK_WEIGHT_1_FLAGS       ((STAI_FLAG_PREALLOCATED))
+#define STAI_NETWORK_WEIGHT_1_SIZE        (39904)
+#define STAI_NETWORK_WEIGHT_1_SIZE_BYTES  (39904)
 
 
 /*****************************************************************************/
 /*  Macros to declare states buffers characteristics  */
-#define STAI_EMBED_NETWORK_STATES_SIZE              (0)
-#define STAI_EMBED_NETWORK_STATES_SIZE_BYTES        (0)
-#define STAI_EMBED_NETWORK_STATES_ALIGNMENTS        {}
-#define STAI_EMBED_NETWORK_STATES_SIZES             { 0, }
-#define STAI_EMBED_NETWORK_STATES_NUM               (0)
+#define STAI_NETWORK_STATES_SIZE              (0)
+#define STAI_NETWORK_STATES_SIZE_BYTES        (0)
+#define STAI_NETWORK_STATES_ALIGNMENTS        {}
+#define STAI_NETWORK_STATES_SIZES             { 0, }
+#define STAI_NETWORK_STATES_NUM               (0)
 
-#define STAI_EMBED_NETWORK_STATE_1_FLAGS            (0x0)
-#define STAI_EMBED_NETWORK_STATE_1_ALIGNMENT        4
-#define STAI_EMBED_NETWORK_STATE_1_SIZE             (0)
-#define STAI_EMBED_NETWORK_STATE_1_SIZE_BYTES       (0)
+#define STAI_NETWORK_STATE_1_FLAGS            (0x0)
+#define STAI_NETWORK_STATE_1_ALIGNMENT        4
+#define STAI_NETWORK_STATE_1_SIZE             (0)
+#define STAI_NETWORK_STATE_1_SIZE_BYTES       (0)
 /*****************************************************************************/
 STAI_API_DECLARE_BEGIN
 
@@ -160,11 +160,11 @@ typedef struct {
   stai_return_code             _return_code;
   stai_event_cb                _callback;
   void*                        _callback_cookie;
-  stai_ptr                     _activations[STAI_EMBED_NETWORK_ACTIVATIONS_NUM];
-  stai_ptr                     _weights[STAI_EMBED_NETWORK_WEIGHTS_NUM];
-  stai_ptr                     _inputs[STAI_EMBED_NETWORK_IN_NUM];
-  stai_ptr                     _outputs[STAI_EMBED_NETWORK_OUT_NUM];
-} _stai_embed_network_context;
+  stai_ptr                     _activations[STAI_NETWORK_ACTIVATIONS_NUM];
+  stai_ptr                     _weights[STAI_NETWORK_WEIGHTS_NUM];
+  stai_ptr                     _inputs[STAI_NETWORK_IN_NUM];
+  stai_ptr                     _outputs[STAI_NETWORK_OUT_NUM];
+} _stai_network_context;
 
 
 /*****************************************************************************/
@@ -176,12 +176,12 @@ typedef struct {
  *          handler named network.
  *          Application must never access directly the directly the context but it must be accessed only with
  *          associates stai APIs. Application knows network context size by using macro
- *          @ref STAI_EMBED_NETWORK_CONTEXT_SIZE or @ref stai_embed_network_get_context_size(void) API
+ *          @ref STAI_NETWORK_CONTEXT_SIZE or @ref stai_network_get_context_size(void) API
  * @param[in] network network context opaque pointer
  * @return STAI_SUCCESS on correct initialization, else 1st error return code from @ref stai_return_code enums.
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_init(
+stai_return_code stai_network_init(
   stai_network* network);
 
 
@@ -195,30 +195,30 @@ stai_return_code stai_embed_network_init(
  * @return STAI_SUCCESS on correct de-initialization, else 1st error return code from @ref stai_return_code enums.
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_deinit(
+stai_return_code stai_network_deinit(
   stai_network* network);
 
 
 /**
  * @brief Runs the network model inference on a single input sample
  * @details This API runs a newtwork inference. Network input data is expected to be available in expected format
- *          on the input buffers whose memory adresses are retrived using @ref stai_embed_network_get_inputs() API.
+ *          on the input buffers whose memory adresses are retrived using @ref stai_network_get_inputs() API.
  *          Alternatively the application could allocate the inputs and set the addresses using the
- *          @ref stai_embed_network_set_inputs() API. Similar behaviour is expected for the network outputs handling.
+ *          @ref stai_network_set_inputs() API. Similar behaviour is expected for the network outputs handling.
  *          The features of each input / output buffer (format, byte size, etc.)may be queried using
- *          @ref stai_embed_network_get_info() API or the set of specific macros available in this header file.
+ *          @ref stai_network_get_info() API or the set of specific macros available in this header file.
  *          When mode is MODE_SYNC the call to this API is blocking untile the end of the inference. In ASYNC_MODE the
  *          API will exit before the completion of the inference by returning the current state of the inference. It
  *          could be also used to query wether or not the inference has been completed.
  *          After completions of run API the results of the network inference may be retrieved at addresses returned by
- *          @ref stai_embed_network_get_outputs() API.
+ *          @ref stai_network_get_outputs() API.
  * @param[in] network network context opaque pointer
  * @param[in] mode the modality used to run the network. It may be synchronous (MODE_SYNC) or asyncronous (MODE_ASYNC).
  *            see @ref stai_run_mode enum
  * @return STAI_SUCCESS on correct run, else error 1st return code from @ref stai_return_code enums.
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_run(
+stai_return_code stai_network_run(
   stai_network* network,
   const stai_run_mode mode);
 
@@ -234,7 +234,7 @@ stai_return_code stai_embed_network_run(
  * @return the network context size in bytes
  */
 STAI_API_ENTRY
-stai_size stai_embed_network_get_context_size(void);
+stai_size stai_network_get_context_size(void);
 
 
 /**
@@ -245,7 +245,7 @@ stai_size stai_embed_network_get_context_size(void);
  * @return STAI_SUCCESS on correct run, else error 1st return code from @ref stai_return_code enums.
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_get_info(
+stai_return_code stai_network_get_info(
   stai_network* network,
   stai_network_info* info);
 
@@ -260,7 +260,7 @@ stai_return_code stai_embed_network_get_info(
  * @note activations array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_get_activations(
+stai_return_code stai_network_get_activations(
   stai_network* network,
   stai_ptr* activations,
   stai_size* n_activations);
@@ -276,7 +276,7 @@ stai_return_code stai_embed_network_get_activations(
  * @note weights array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_get_weights(
+stai_return_code stai_network_get_weights(
   stai_network* network,
   stai_ptr* weights,
   stai_size* n_weights);
@@ -292,7 +292,7 @@ stai_return_code stai_embed_network_get_weights(
  * @note inputs array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_get_inputs(
+stai_return_code stai_network_get_inputs(
   stai_network* network,
   stai_ptr* inputs,
   stai_size* n_inputs);
@@ -308,7 +308,7 @@ stai_return_code stai_embed_network_get_inputs(
  * @note outputs array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_get_outputs(
+stai_return_code stai_network_get_outputs(
   stai_network* network,
   stai_ptr* outputs,
   stai_size* n_outputs);
@@ -319,7 +319,7 @@ stai_return_code stai_embed_network_get_outputs(
  * @details as an array of pointers of size n_states. Optional API for stateful newtorks. It gets the
  *          addresses of persistent internal states of the network. This APIs allows an application to manage
  *          stateful buffers (e.g. to save them). State buffers may be set back using
- *          @ref stai_embed_network_set_states() dual API
+ *          @ref stai_network_set_states() dual API
  * @param[in] network network context opaque pointer
  * @param[out] states an array of pointers reporting the addresses of all the network internal states buffers
  * @param[out] n_states the number of the network internal states (i.e. the size of the states array)
@@ -327,7 +327,7 @@ stai_return_code stai_embed_network_get_outputs(
  * @note outputs array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_get_states(
+stai_return_code stai_network_get_states(
   stai_network* network,
   stai_ptr* states,
   stai_size* n_states);
@@ -341,7 +341,7 @@ stai_return_code stai_embed_network_get_states(
  * @return STAI_SUCCESS if no errors, else the 1st error generated.
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_get_error(
+stai_return_code stai_network_get_error(
   stai_network* network);
 
 
@@ -358,7 +358,7 @@ stai_return_code stai_embed_network_get_error(
  * @note activations array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_set_activations(
+stai_return_code stai_network_set_activations(
   stai_network* network,
   const stai_ptr* activations,
   const stai_size n_activations);
@@ -374,7 +374,7 @@ stai_return_code stai_embed_network_set_activations(
  * @note weights array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_set_weights(
+stai_return_code stai_network_set_weights(
   stai_network* network,
   const stai_ptr* weights,
   const stai_size n_weights);
@@ -390,7 +390,7 @@ stai_return_code stai_embed_network_set_weights(
  * @note inputs array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_set_inputs(
+stai_return_code stai_network_set_inputs(
   stai_network* network,
   const stai_ptr* inputs,
   const stai_size n_inputs);
@@ -406,7 +406,7 @@ stai_return_code stai_embed_network_set_inputs(
  * @note outputs array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_set_outputs(
+stai_return_code stai_network_set_outputs(
   stai_network* network,
   const stai_ptr* outputs,
   const stai_size n_outputs);
@@ -422,7 +422,7 @@ stai_return_code stai_embed_network_set_outputs(
  * @note states array pointers are passed by copy
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_set_states(
+stai_return_code stai_network_set_states(
   stai_network* network,
   const stai_ptr* states,
   const stai_size n_states);
@@ -431,7 +431,7 @@ stai_return_code stai_embed_network_set_states(
 /**
  * @brief Set a callback function to inspect network activation buffers.
  * @details this is an API to retrieve the content on intermediate activations buffers while executing the
- *          @ref stai_embed_network_run() API. It is a helper routine that could be used by an application for debug
+ *          @ref stai_network_run() API. It is a helper routine that could be used by an application for debug
  *          and / or benchmarking intermadiate results of the network.
  * @param[in] network network context opaque pointer
  * @param[in] cb a function pointer to the inspection callback routine. See @ref stai_event_cb function pointer for
@@ -440,7 +440,7 @@ stai_return_code stai_embed_network_set_states(
  * @return STAI_SUCCESS if successfull, else error 1st return code from @ref stai_return_code enums.
  */
 STAI_API_ENTRY
-stai_return_code stai_embed_network_set_callback(
+stai_return_code stai_network_set_callback(
   stai_network* network,
   const stai_event_cb cb,
   void* cb_cookie);
@@ -449,5 +449,5 @@ stai_return_code stai_embed_network_set_callback(
 
 STAI_API_DECLARE_END
 
-#endif    /* STAI_EMBED_NETWORK_H */
+#endif    /* STAI_NETWORK_H */
 

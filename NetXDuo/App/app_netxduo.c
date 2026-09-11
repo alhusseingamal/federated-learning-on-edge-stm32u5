@@ -470,7 +470,7 @@ static void App_SNTP_Thread_Entry(ULONG info)
 
   /* 4. Receive Final Aggregated Global Model */
   printf("[FL] Receiving final aggregated model from server...\r\n");
-  status = fl_tcp_receive_exact(&FLClientSocket, (UCHAR *)weights_buffer, FL_WEIGHTS_BYTES, NX_IP_PERIODIC_RATE * 15);
+  status = fl_tcp_receive_exact(&FLClientSocket, (UCHAR *)weights_buffer, FL_WEIGHTS_BYTES, NX_IP_PERIODIC_RATE * 5);
   if (status == NX_SUCCESS)
   {
     trainable_head_import_weights(weights_buffer);

@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file    embed_network.h
-  * @date    2026-09-06T22:41:06+0200
+  * @date    2026-09-12T00:14:21+0200
   * @brief   ST.AI Tool Automatic Code Generator for Embedded NN computing
   ******************************************************************************
   * @attention
@@ -22,11 +22,11 @@
 
 const stai_network_details g_embed_network_details = {
   .tensors = (const stai_tensor[6]) {
-   { .size_bytes = 288, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 24, 3, 1}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "input_tensor_output" },
-   { .size_bytes = 288, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 24, 3, 1}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_conv2d_1_BiasAdd__70_to_chfirst_output" },
-   { .size_bytes = 2592, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 9, 3, 24}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_conv2d_1_BiasAdd0_output" },
-   { .size_bytes = 2592, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 9, 3, 24}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_activation_1_Relu0_output" },
-   { .size_bytes = 864, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 3, 3, 24}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_max_pooling2d_1_MaxPool2d0_output" },
+   { .size_bytes = 576, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 48, 3, 1}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "input_tensor_output" },
+   { .size_bytes = 576, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 48, 3, 1}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_conv2d_1_BiasAdd__70_to_chfirst_output" },
+   { .size_bytes = 9504, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 33, 3, 24}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_conv2d_1_BiasAdd0_output" },
+   { .size_bytes = 9504, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 33, 3, 24}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_activation_1_Relu0_output" },
+   { .size_bytes = 3168, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {4, (const int32_t[4]){1, 11, 3, 24}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "functional_1_max_pooling2d_1_MaxPool2d0_output" },
    { .size_bytes = 48, .flags = (STAI_FLAG_HAS_BATCH|STAI_FLAG_CHANNEL_LAST), .format = STAI_FORMAT_FLOAT32, .shape = {2, (const int32_t[2]){1, 12}}, .scale = {0, NULL}, .zeropoint = {0, NULL}, .name = "Identity0_output" }
   },
   .nodes = (const stai_node_details[5]){

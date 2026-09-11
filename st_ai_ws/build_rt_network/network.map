@@ -427,7 +427,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x11 stedgeai_hsp_stubs.o
  .debug_macro   0x00000000      0xacc stedgeai_hsp_stubs.o
  .debug_line    0x00000000      0x167 stedgeai_hsp_stubs.o
- .debug_str     0x00000000     0x305f stedgeai_hsp_stubs.o
+ .debug_str     0x00000000     0x305d stedgeai_hsp_stubs.o
  .comment       0x00000000       0x44 stedgeai_hsp_stubs.o
  .debug_frame   0x00000000       0xe0 stedgeai_hsp_stubs.o
  .ARM.attributes
@@ -558,7 +558,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x16 syscalls.o
  .debug_macro   0x00000000       0xce syscalls.o
  .debug_line    0x00000000      0x6e1 syscalls.o
- .debug_str     0x00000000     0x9453 syscalls.o
+ .debug_str     0x00000000     0x9451 syscalls.o
  .comment       0x00000000       0x44 syscalls.o
  .debug_frame   0x00000000      0x190 syscalls.o
  .ARM.attributes
@@ -619,7 +619,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x6a sysmem.o
  .debug_macro   0x00000000      0x1df sysmem.o
  .debug_line    0x00000000      0x33c sysmem.o
- .debug_str     0x00000000     0x7158 sysmem.o
+ .debug_str     0x00000000     0x7156 sysmem.o
  .comment       0x00000000       0x44 sysmem.o
  .debug_frame   0x00000000       0x28 sysmem.o
  .ARM.attributes
@@ -1979,7 +1979,7 @@ LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/a
                 0x08000000                g_pfnVectors
                 0x08000040                        . = ALIGN (0x4)
 
-.text           0x08000040     0x1688
+.text           0x08000040     0x168c
                 0x08000040                        . = ALIGN (0x4)
  *(.text)
  .text          0x08000040       0x40 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
@@ -1994,175 +1994,175 @@ LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/a
                 0x080000f0       0x74 network.o
                 0x080000f0                forward_lite_mp_max_pooling2d
  .text.stai_network_run
-                0x08000164      0x25c network.o
+                0x08000164      0x260 network.o
                 0x08000164                stai_network_run
  .text.stai_network_get_activations
-                0x080003c0       0x4c network.o
-                0x080003c0                stai_network_get_activations
+                0x080003c4       0x4c network.o
+                0x080003c4                stai_network_get_activations
  .text.stai_network_get_inputs
-                0x0800040c       0x4c network.o
-                0x0800040c                stai_network_get_inputs
+                0x08000410       0x4c network.o
+                0x08000410                stai_network_get_inputs
  .text.stai_network_get_outputs
-                0x08000458       0x4c network.o
-                0x08000458                stai_network_get_outputs
+                0x0800045c       0x4c network.o
+                0x0800045c                stai_network_get_outputs
  .text.stai_network_set_activations
-                0x080004a4       0x88 network.o
-                0x080004a4                stai_network_set_activations
+                0x080004a8       0x88 network.o
+                0x080004a8                stai_network_set_activations
  .text.Reset_Handler
-                0x0800052c       0x50 startup_stm32xx.o
-                0x0800052c                Reset_Handler
+                0x08000530       0x50 startup_stm32xx.o
+                0x08000530                Reset_Handler
  .text.Default_Handler
-                0x0800057c        0x2 startup_stm32xx.o
-                0x0800057c                DebugMon_Handler
-                0x0800057c                HardFault_Handler
-                0x0800057c                SysTick_Handler
-                0x0800057c                PendSV_Handler
-                0x0800057c                NMI_Handler
-                0x0800057c                UsageFault_Handler
-                0x0800057c                Default_Handler
-                0x0800057c                MemManage_Handler
-                0x0800057c                SVC_Handler
-                0x0800057c                BusFault_Handler
- *fill*         0x0800057e        0x2 
- .text.aiInit   0x08000580       0x50 stedgeai_app_main.o
-                0x08000580                aiInit
- .text.aiRun    0x080005d0        0xc stedgeai_app_main.o
-                0x080005d0                aiRun
+                0x08000580        0x2 startup_stm32xx.o
+                0x08000580                DebugMon_Handler
+                0x08000580                HardFault_Handler
+                0x08000580                SysTick_Handler
+                0x08000580                PendSV_Handler
+                0x08000580                NMI_Handler
+                0x08000580                UsageFault_Handler
+                0x08000580                Default_Handler
+                0x08000580                MemManage_Handler
+                0x08000580                SVC_Handler
+                0x08000580                BusFault_Handler
+ *fill*         0x08000582        0x2 
+ .text.aiInit   0x08000584       0x50 stedgeai_app_main.o
+                0x08000584                aiInit
+ .text.aiRun    0x080005d4        0xc stedgeai_app_main.o
+                0x080005d4                aiRun
  .text.main_loop
-                0x080005dc        0xc stedgeai_app_main.o
-                0x080005dc                main_loop
+                0x080005e0        0xc stedgeai_app_main.o
+                0x080005e0                main_loop
  .text.SystemInit
-                0x080005e8        0x2 stedgeai_app_main.o
-                0x080005e8                SystemInit
+                0x080005ec        0x2 stedgeai_app_main.o
+                0x080005ec                SystemInit
  .text.startup.main
-                0x080005ea        0x6 stedgeai_app_main.o
-                0x080005ea                main
+                0x080005ee        0x6 stedgeai_app_main.o
+                0x080005ee                main
  .text.forward_mp
-                0x080005f0      0x1cc /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(layers_pool_generic_float.o)
-                0x080005f0                forward_mp
+                0x080005f4      0x1cc /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(layers_pool_generic_float.o)
+                0x080005f4                forward_mp
  .text.forward_lite_conv2d_if32of32wf32
-                0x080007bc      0x670 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(forward_lite_conv2d_if32of32wf32.o)
-                0x080007bc                forward_lite_conv2d_if32of32wf32
+                0x080007c0      0x670 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(forward_lite_conv2d_if32of32wf32.o)
+                0x080007c0                forward_lite_conv2d_if32of32wf32
  .text.forward_lite_dense_if32of32wf32
-                0x08000e2c      0x2b8 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_dense_if32.o)
-                0x08000e2c                forward_lite_dense_if32of32wf32
+                0x08000e30      0x2b8 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_dense_if32.o)
+                0x08000e30                forward_lite_dense_if32of32wf32
  .text.forward_lite_nl_relu_if32of32
-                0x080010e4       0x38 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_nl_generic_float.o)
-                0x080010e4                forward_lite_nl_relu_if32of32
+                0x080010e8       0x38 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_nl_generic_float.o)
+                0x080010e8                forward_lite_nl_relu_if32of32
  .text.forward_lite_nl_softmax_if32of32
-                0x0800111c       0x64 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_nl_generic_float.o)
-                0x0800111c                forward_lite_nl_softmax_if32of32
+                0x08001120       0x64 /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_nl_generic_float.o)
+                0x08001120                forward_lite_nl_softmax_if32of32
  .text.st_int8_copy
-                0x08001180      0x13c /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(st_int8_fill.o)
-                0x08001180                st_int8_copy
+                0x08001184      0x13c /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(st_int8_fill.o)
+                0x08001184                st_int8_copy
  .text.forward_lite_nl_softmax_if32of32_kernel
-                0x080012bc       0xdc /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_nl_softmax_if32of32.o)
-                0x080012bc                forward_lite_nl_softmax_if32of32_kernel
- .text.__errno  0x08001398        0xc /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
-                0x08001398                __errno
+                0x080012c0       0xdc /home/alhussein/st/STEdgeAI/4.0/Middlewares/ST/AI/Lib/GCC/ARMCortexM33/NetworkRuntime1201_CM33_GCC.a(lite_nl_softmax_if32of32.o)
+                0x080012c0                forward_lite_nl_softmax_if32of32_kernel
+ .text.__errno  0x0800139c        0xc /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-errno.o)
+                0x0800139c                __errno
  .text.__libc_init_array
-                0x080013a4       0x48 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
-                0x080013a4                __libc_init_array
- .text.expf     0x080013ec       0x78 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-wf_exp.o)
-                0x080013ec                expf
- .text.finitef  0x08001464       0x14 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-sf_finite.o)
-                0x08001464                finitef
+                0x080013a8       0x48 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-init.o)
+                0x080013a8                __libc_init_array
+ .text.expf     0x080013f0       0x78 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-wf_exp.o)
+                0x080013f0                expf
+ .text.finitef  0x08001468       0x14 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-sf_finite.o)
+                0x08001468                finitef
  .text.with_errnof
-                0x08001478       0x1c /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
- .text.xflowf   0x08001494       0x20 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
+                0x0800147c       0x1c /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
+ .text.xflowf   0x08001498       0x20 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
  .text.__math_uflowf
-                0x080014b4        0xc /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
-                0x080014b4                __math_uflowf
+                0x080014b8        0xc /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
+                0x080014b8                __math_uflowf
  .text.__math_oflowf
-                0x080014c0        0xc /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
-                0x080014c0                __math_oflowf
+                0x080014c4        0xc /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-math_errf.o)
+                0x080014c4                __math_oflowf
  .text.__ieee754_expf
-                0x080014cc      0x1e4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
-                0x080014cc                __ieee754_expf
+                0x080014d0      0x1e4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
+                0x080014d0                __ieee754_expf
  *(.glue_7)
- .glue_7        0x080016b0        0x0 linker stubs
+ .glue_7        0x080016b4        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080016b0        0x0 linker stubs
+ .glue_7t       0x080016b4        0x0 linker stubs
  *(.eh_frame)
- .eh_frame      0x080016b0        0x0 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .eh_frame      0x080016b4        0x0 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
  *(.init)
- .init          0x080016b0        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crti.o
-                0x080016b0                _init
- .init          0x080016b4        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtn.o
+ .init          0x080016b4        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crti.o
+                0x080016b4                _init
+ .init          0x080016b8        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtn.o
  *(.fini)
- .fini          0x080016bc        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crti.o
-                0x080016bc                _fini
- .fini          0x080016c0        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtn.o
-                0x080016c8                        . = ALIGN (0x4)
-                0x080016c8                        _etext = .
+ .fini          0x080016c0        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crti.o
+                0x080016c0                _fini
+ .fini          0x080016c4        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtn.o
+                0x080016cc                        . = ALIGN (0x4)
+                0x080016cc                        _etext = .
 
-.vfp11_veneer   0x080016c8        0x0
- .vfp11_veneer  0x080016c8        0x0 linker stubs
+.vfp11_veneer   0x080016cc        0x0
+ .vfp11_veneer  0x080016cc        0x0 linker stubs
 
-.v4_bx          0x080016c8        0x0
- .v4_bx         0x080016c8        0x0 linker stubs
+.v4_bx          0x080016cc        0x0
+ .v4_bx         0x080016cc        0x0 linker stubs
 
-.iplt           0x080016c8        0x0
- .iplt          0x080016c8        0x0 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
+.iplt           0x080016cc        0x0
+ .iplt          0x080016cc        0x0 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
 
-.rodata         0x080016c8     0x3030
-                0x080016c8                        . = ALIGN (0x4)
+.rodata         0x080016d0     0x9c30
+                0x080016d0                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata._network_context.0
-                0x080016c8       0x30 network.o
+                0x080016d0       0x30 network.o
  .rodata.max_pooling2d_chain
-                0x080016f8        0x8 network.o
+                0x08001700        0x8 network.o
  .rodata.g_network_weights_array
-                0x08001700     0x2fe0 network_data.o
-                0x08001700                g_network_weights_array
- .rodata.ln2LO  0x080046e0        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
- .rodata.ln2HI  0x080046e8        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
- .rodata.halF   0x080046f0        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
-                0x080046f8                        . = ALIGN (0x4)
+                0x08001708     0x9be0 network_data.o
+                0x08001708                g_network_weights_array
+ .rodata.ln2LO  0x0800b2e8        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
+ .rodata.ln2HI  0x0800b2f0        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
+ .rodata.halF   0x0800b2f8        0x8 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a(libm_a-ef_exp.o)
+                0x0800b300                        . = ALIGN (0x4)
 
-.rel.dyn        0x080046f8        0x0
- .rel.iplt      0x080046f8        0x0 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
+.rel.dyn        0x0800b300        0x0
+ .rel.iplt      0x0800b300        0x0 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
 
-.ARM.extab      0x080046f8        0x0
-                0x080046f8                        . = ALIGN (0x4)
+.ARM.extab      0x0800b300        0x0
+                0x0800b300                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x080046f8                        . = ALIGN (0x4)
+                0x0800b300                        . = ALIGN (0x4)
 
-.ARM            0x080046f8        0x0
-                0x080046f8                        . = ALIGN (0x4)
-                0x080046f8                        __exidx_start = .
+.ARM            0x0800b300        0x0
+                0x0800b300                        . = ALIGN (0x4)
+                0x0800b300                        __exidx_start = .
  *(.ARM.exidx*)
-                0x080046f8                        __exidx_end = .
-                0x080046f8                        . = ALIGN (0x4)
+                0x0800b300                        __exidx_end = .
+                0x0800b300                        . = ALIGN (0x4)
 
-.preinit_array  0x080046f8        0x0
-                0x080046f8                        . = ALIGN (0x4)
-                0x080046f8                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x0800b300        0x0
+                0x0800b300                        . = ALIGN (0x4)
+                0x0800b300                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x080046f8                        PROVIDE (__preinit_array_end = .)
-                0x080046f8                        . = ALIGN (0x4)
+                0x0800b300                        PROVIDE (__preinit_array_end = .)
+                0x0800b300                        . = ALIGN (0x4)
 
-.init_array     0x080046f8        0x4
-                0x080046f8                        . = ALIGN (0x4)
-                0x080046f8                        PROVIDE (__init_array_start = .)
+.init_array     0x0800b300        0x4
+                0x0800b300                        . = ALIGN (0x4)
+                0x0800b300                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x080046f8        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
-                0x080046fc                        PROVIDE (__init_array_end = .)
-                0x080046fc                        . = ALIGN (0x4)
+ .init_array    0x0800b300        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
+                0x0800b304                        PROVIDE (__init_array_end = .)
+                0x0800b304                        . = ALIGN (0x4)
 
-.fini_array     0x080046fc        0x4
-                0x080046fc                        . = ALIGN (0x4)
+.fini_array     0x0800b304        0x4
+                0x0800b304                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x080046fc        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
+ .fini_array    0x0800b304        0x4 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x08004700                        . = ALIGN (0x4)
-                0x08004700                        _sidata = LOADADDR (.data)
+                0x0800b308                        . = ALIGN (0x4)
+                0x0800b308                        _sidata = LOADADDR (.data)
 
-.data           0x20000000      0x158 load address 0x08004700
+.data           0x20000000      0x158 load address 0x0800b308
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -2200,11 +2200,11 @@ LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/a
                 0x20000158                        . = ALIGN (0x4)
                 0x20000158                        _edata = .
 
-.igot.plt       0x20000158        0x0 load address 0x08004858
+.igot.plt       0x20000158        0x0 load address 0x0800b460
  .igot.plt      0x20000158        0x0 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/crtbegin.o
                 0x20000158                        . = ALIGN (0x4)
 
-.bss            0x20000158      0xd28 load address 0x08004858
+.bss            0x20000158     0x2948 load address 0x0800b460
                 0x20000158                        _sbss = .
                 0x20000158                        __bss_start__ = _sbss
  *(.bss)
@@ -2221,27 +2221,27 @@ LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/a
                 0x20000190        0x4 stedgeai_app_main.o
  .bss.m_inputs  0x20000194        0x4 stedgeai_app_main.o
  .bss.activations_1
-                0x20000198      0xb80 stedgeai_app_main.o
+                0x20000198     0x27a0 stedgeai_app_main.o
  .bss.m_network
-                0x20000d18       0x30 stedgeai_app_main.o
-                0x20000d18                m_network
- .bss.__sf      0x20000d48      0x138 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
-                0x20000d48                __sf
+                0x20002938       0x30 stedgeai_app_main.o
+                0x20002938                m_network
+ .bss.__sf      0x20002968      0x138 /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libc_nano.a(libc_a-findfp.o)
+                0x20002968                __sf
  *(COMMON)
-                0x20000e80                        . = ALIGN (0x4)
-                0x20000e80                        _ebss = .
-                0x20000e80                        __bss_end__ = _ebss
+                0x20002aa0                        . = ALIGN (0x4)
+                0x20002aa0                        _ebss = .
+                0x20002aa0                        __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x20000e80     0x3000 load address 0x08004858
-                0x20000e80                        . = ALIGN (0x8)
+                0x20002aa0     0x3000 load address 0x0800b460
+                0x20002aa0                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
-                0x20000e80                        PROVIDE (_end = .)
-                0x20002e80                        . = (. + _Min_Heap_Size)
- *fill*         0x20000e80     0x2000 
-                0x20003e80                        . = (. + _Min_Stack_Size)
- *fill*         0x20002e80     0x1000 
-                0x20003e80                        . = ALIGN (0x8)
+                0x20002aa0                        PROVIDE (_end = .)
+                0x20004aa0                        . = (. + _Min_Heap_Size)
+ *fill*         0x20002aa0     0x2000 
+                0x20005aa0                        . = (. + _Min_Stack_Size)
+ *fill*         0x20004aa0     0x1000 
+                0x20005aa0                        . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -2291,11 +2291,11 @@ LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/a
 LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v8-m.main+fp/hard/libm.a
 LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v8-m.main+fp/hard/libgcc.a
 
-.debug_info     0x00000000     0x29f5
- .debug_info    0x00000000     0x23dd network.o
- .debug_info    0x000023dd       0xcd network_data.o
- .debug_info    0x000024aa       0x32 startup_stm32xx.o
- .debug_info    0x000024dc      0x519 stedgeai_app_main.o
+.debug_info     0x00000000     0x29f7
+ .debug_info    0x00000000     0x23df network.o
+ .debug_info    0x000023df       0xcd network_data.o
+ .debug_info    0x000024ac       0x32 startup_stm32xx.o
+ .debug_info    0x000024de      0x519 stedgeai_app_main.o
 
 .debug_abbrev   0x00000000      0x634
  .debug_abbrev  0x00000000      0x3f3 network.o
@@ -2402,18 +2402,18 @@ LOAD /home/alhussein/st/stm32cubeclt_1.21.0/GNU-tools-for-STM32/bin/../lib/gcc/a
  .debug_macro   0x000040b5       0x16 stedgeai_app_main.o
  .debug_macro   0x000040cb       0x10 stedgeai_app_main.o
 
-.debug_line     0x00000000     0x203f
- .debug_line    0x00000000     0x184c network.o
- .debug_line    0x0000184c      0x29d network_data.o
- .debug_line    0x00001ae9       0xc2 startup_stm32xx.o
- .debug_line    0x00001bab      0x494 stedgeai_app_main.o
+.debug_line     0x00000000     0x2073
+ .debug_line    0x00000000     0x185e network.o
+ .debug_line    0x0000185e      0x2af network_data.o
+ .debug_line    0x00001b0d       0xc2 startup_stm32xx.o
+ .debug_line    0x00001bcf      0x4a4 stedgeai_app_main.o
 
-.debug_str      0x00000000    0x15a51
- .debug_str     0x00000000    0x15a51 network.o
-                              0x15604 (size before relaxing)
- .debug_str     0x00015a51     0x46c7 network_data.o
- .debug_str     0x00015a51       0xce startup_stm32xx.o
- .debug_str     0x00015a51     0x89cf stedgeai_app_main.o
+.debug_str      0x00000000    0x15a78
+ .debug_str     0x00000000    0x15a78 network.o
+                              0x1561b (size before relaxing)
+ .debug_str     0x00015a78     0x46d7 network_data.o
+ .debug_str     0x00015a78       0xcc startup_stm32xx.o
+ .debug_str     0x00015a78     0x89d2 stedgeai_app_main.o
 
 .comment        0x00000000       0x86
  .comment       0x00000000       0x86 network.o

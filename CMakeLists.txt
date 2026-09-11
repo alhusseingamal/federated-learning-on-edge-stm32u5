@@ -65,10 +65,14 @@ target_sources(${CMAKE_PROJECT_NAME} PRIVATE
     Drivers/BSP/Components/hts221/hts221.c
     Drivers/BSP/Components/hts221/hts221_reg.c
     
-    # NN files
+    # Neural Network files
     Core/Src/preprocess.c
+    
+    ## Original Backbone (with head original last head layer)
     # HAR/AI/network.c
     # HAR/AI/network_data.c
+    
+    ## Sliced network (head removed)
     HAR/AI_EMBED/embed_network.c       # Replaces network.c
     HAR/AI_EMBED/embed_network_data.c  # Replaces network_data.c
     Core/Src/trainable_head.c          # Add this new module
